@@ -50,7 +50,7 @@ Make sure you have configured the app (see the previous section). Then:
 
 ## About the test app:
 
-The app instantiates an `OTNetworkTest` object, passing in the API key, session ID and token you
+The app instantiates an `OTNetworkTest` object, passing in the application ID, session ID and token you
 set in the config.js file. (See "Configuring the app" above.)
 
 Then it calls the `testConnectivity()` method of the `OTNetworkTest` object. The completion handler

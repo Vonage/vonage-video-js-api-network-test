@@ -2,20 +2,20 @@ require('dotenv').config()
 const OpenTok = require('opentok');
 const Promise = require('promise');
 const fse = require('fs-extra');
-const apiKey = process.env.TEST_API_KEY
+const applicationId = process.env.TEST_API_KEY
 const apiSecret = process.env.TEST_API_SECRET
 
 
-function createSessionAndToken({ apiKey, apiSecret }) {
+function createSessionAndToken({ applicationId, apiSecret }) {
   return new Promise((resolve, reject) => {
-    const opentok = new OpenTok(apiKey, apiSecret);
+    const opentok = new OpenTok(applicationId, apiSecret);
     opentok.createSession({ mediaMode: 'routed' }, (error, session) => {
       if (error) {
         reject(error);
       } else {
         const token = opentok.generateToken(session.sessionId);
         const { sessionId } = session;
-        resolve({ apiKey, sessionId, token });
+        resolve({ applicationId, sessionId, token });
       }
     });
   });
@@ -28,7 +28,7 @@ function writeCredentials(credentialsArray) {
 }
 
 function generateCredentials(){
-  const create = () => createSessionAndToken({ apiKey, apiSecret })
+  const create = () => createSessionAndToken({ applicationId, apiSecret })
 
   Promise.all([create(), create(), create()])
     .then(writeCredentials)
