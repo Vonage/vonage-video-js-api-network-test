@@ -1,9 +1,5 @@
-
-![logo](https://raw.githubusercontent.com/opentok/opentok-network-test-js/master/media/tokbox-logo.png)
-
 # Vonage Video API Network Test
 
-[![Build Status](https://goo.gl/17JDLY)](https://travis-ci.com/opentok/opentok-network-test-js)
 [![license](https://img.shields.io/github/license/opentok/opentok-network-test-js.svg)](https://github.com/opentok/opentok-network-test-js/blob/master/CONTRIBUTING.md)
 [![npm](https://img.shields.io/npm/v/opentok-network-test-js.svg)](https://www.npmjs.com/package/opentok-network-test-js)
 
@@ -110,7 +106,7 @@ with `audioOnly` set to `true` into the constructor:
 
 ```javascript
 const sessionInfo = {
-  apiKey: '123456', // Add the API key for your Vonage Video API project here.
+  apiKey: '123456', // Add the application ID for your Vonage Video API project here.
   sessionId: '1_MX40NzIwMzJ-fjE1MDElGQkJJfn4', // Add a test session ID for that project
   token: 'T1==cGFydG5lcXN0PQ==' // Add a token for that session here
 }
@@ -178,7 +174,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
 
 * `sessionInfo` -- An object containing the following:
 
-  * `applicationId` -- The API key corresponding to the Vonage Video API project the app uses.
+  * `apiKey` -- The application ID corresponding to the Vonage Video API project the app uses.
 
   * `sessionId` -- A test session ID. This must be an ID for a different session than
      the one that your application will be used for communication. Generate a unique
@@ -301,12 +297,12 @@ with a `results` object that has the following two properties:
   * `type` -- A sting defining the failure type. It will be set to one of the following values:
 
     * `'api'` -- The test could not connect to the Vonage Video API server. Connection to this
-    server is required to connect to an Vonage Video API session.
+    server is required to connect to a Vonage Video API session.
 
     * `'messaging'` -- The test could not establish a connection to the Vonage Video API messaging WebSocket.
     This connection is required to connect to an Vonage Video API session. In addition to other causes
     for WebSocket connectivity failures, this failure type will occur if you pass an invalid
-    Vonage Video API API key, session ID, or token into the `OTNetworkTest()` constructor.
+    Vonage Video API application ID, session ID, or token into the `OTNetworkTest()` constructor.
 
     * `'media'` -- The test could not connect to the Vonage Video API Media Router. If your app uses
     a routed session, it will not succeed in using Vonage Video API. However, if your app uses
@@ -315,7 +311,7 @@ with a `results` object that has the following two properties:
 
     * `'logging'` -- The test could not connect to the Vonage Video API logging server. The OpenTok.js
     library periodically logs data (such as video and audio quality) to this server. The client
-    can still connect to an Vonage Video API session, however TokBox will not collect data that may help
+    can still connect to a Vonage Video API session, however Vonage will not collect data that may help
     you debug issues with the session, using tools like [Vonage Video API
     Inspector](https://tools.vonage.com/video/inspector/).
 
@@ -350,7 +346,7 @@ with a `results` object that has the following two properties:
 
 ### OTNetworkTest.testQuality(updateCallback)
 
-This function runs a test publisher (using the API key, session ID and token provided in the constructor). Based on the measured video bitrate, audio bitrate, and the audio packet loss for
+This function runs a test publisher (using the application ID, session ID and token provided in the constructor). Based on the measured video bitrate, audio bitrate, and the audio packet loss for
 the published stream, it provides the following results:
 
 * Whether audio and video are supported and a reason why they aren't supported (if they aren't).
@@ -402,7 +398,7 @@ audio-video test), the property is set to 'audio-only'.
 
 Pass in a `null` value if you do not want to register an `updateCallback` function.
 
-Update: We advise using 'bytesSent' to provide a more accurate result, especially if scalable video is enabled for the API key
+Update: We advise using 'bytesSent' to provide a more accurate result, especially if scalable video is enabled for the application ID
 
 #### Promise returned
 
@@ -549,7 +545,7 @@ the following:
 |   `PUBLISH_TO_SESSION_PERMISSION_OR_TIMEOUT_ERROR` | The test failed to publish to the test session due a permissions error or timeout. | 
 |   `PUBLISH_TO_SESSION_NETWORK_ERROR` | The test failed to publish to the test session due a network error. | 
 |   `SUBSCRIBE_TO_SESSION_ERROR` | The test encountered an unknown error while attempting to subscribe to a test stream. | 
-|   `LOGGING_SERVER_CONNECTION_ERROR` | The test failed to connect to the OpenTok logging server. | 
+|   `LOGGING_SERVER_CONNECTION_ERROR` | The test failed to connect to the Vonage Video API logging server. | 
 
 #### testQuality() errors
 
@@ -620,4 +616,4 @@ See the /sample subdirectory (and the /sample/README.md file) for a sample app.
 
 [itu-g107]: https://www.itu.int/rec/dologin_pub.asp?lang=s&id=T-REC-G.107-201402-S!!PDF-E
 
-[releases-page]: https://github.com/opentok/opentok-network-test-js/releases
+[releases-page]: https://github.com/vonage/vonage-video-js-api-network-test/releases
