@@ -1,15 +1,15 @@
-OpenTok Network Test sample app
+Vonage Video API Network Test sample app
 ===============================
 
 This sample uses the opentok-network-test-js module to check connectivity to
-OpenTok servers and test session quality.
+Vonage Video API servers and test session quality.
 
 ## Configuring the app:
 
 Make a copy of the /sample/src/js/configSample.js file, saving it to sample/src/js/config.js.
 Edit the properties in that file:
 
-* `apiKey` -- The API key corresponding to the OpenTok project the app uses.
+* `applicationId` -- The application ID corresponding to the Vonage Video API project the app uses.
 
 * `sessionId` -- A test session ID.
 
@@ -17,14 +17,14 @@ Edit the properties in that file:
    the one that the app will use for communication. And you will generate a unique test
    session ID for each client. This session ID is used for the network test, and it
    must be different than the session ID used for communication in the app. The test
-   session must be a routed session -- one that uses the [OpenTok Media
+   session must be a routed session -- one that uses the [Vonage Video API Media
    Router](https://tokbox.com/developer/guides/create-session/#media-mode).
 
 * `token` -- A token corresponding to the test session. Generate a test
   token that has its role set to `publisher` or `moderator`.
 
-For test purposes, you can obtain a test session ID an token from the [TokBox account
-page](https://tokbox.com/account). However, in a real application, use the [OpenTok server
+For test purposes, you can obtain a test session ID an token from the [Vonage account
+page](https://tokbox.com/account). However, in a real application, use the [Vonage Video API server
 SDKs](https://tokbox.com/developer/sdks/server/) to generate a unique test session ID (and a
 corresponding token) for each client.
 
