@@ -164,7 +164,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
 
   Note that you may load Vonage Video web client SDK from the Vonage Video API server
   (https://static.opentok.com/v2/js/opentok.js) or via NPM
-  (https://www.npmjs.com/package/@opentok/client). Or if your Vonage Video API application uses the [enterprise
+  (https://www.npmjs.com/package/@vonage/server-sdk). Or if your Vonage Video API application uses the [enterprise
   environment](https://tokbox.com/developer/enterprise/content/enterprise-overview.html),
   you will load Vonage Video web client SDK from the enterprise URL.
 

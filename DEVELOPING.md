@@ -46,13 +46,13 @@ In order to create a release, the following should be completed in order.
    version number.
 1. Create a git tag: `git tag -a vx.y.z -m "Release vx.y.z"`
 1. Ensure that you have permission to update the
-   [opentok npm module](https://www.npmjs.org/package/opentok)
+   [Vonage Server SDK npm module](https://www.npmjs.com/package/@vonage/server-sdk)
 1. Run `npm publish` to release to npm.
 1. Change the version number for future development by incrementing the patch number (z) adding
    "-alpha.1" in the source code (not the documentation). For possible files, see above. Then make
    another commit with the message "Begin development on next version".
 1. Push the changes to the source repository: `git push origin dev && git push --tags origin`
-1. Add a description to the [GitHub Releases](https://github.com/opentok/opentok-node/releases) page with any notable changes.
+1. Add a description to the [GitHub Releases](https://github.com/Vonage/vonage-node-sdk/releases) page with any notable changes.
 
 ## Workflow
 
