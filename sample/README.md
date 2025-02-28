@@ -9,7 +9,7 @@ Vonage Video API servers and test session quality.
 Make a copy of the /sample/src/js/configSample.js file, saving it to sample/src/js/config.js.
 Edit the properties in that file:
 
-* `applicationId` -- The application ID corresponding to the Vonage Video API project the app uses.
+* `applicationId` -- The application ID corresponding to the Vonage Video API application the app uses.
 
 * `sessionId` -- A test session ID.
 
@@ -18,14 +18,13 @@ Edit the properties in that file:
    session ID for each client. This session ID is used for the network test, and it
    must be different than the session ID used for communication in the app. The test
    session must be a routed session -- one that uses the [Vonage Video API Media
-   Router](https://tokbox.com/developer/guides/create-session/#media-mode).
+   Router](https://developer.vonage.com/en/video/guides/create-session#the-media-router-and-media-modes).
 
 * `token` -- A token corresponding to the test session. Generate a test
   token that has its role set to `publisher` or `moderator`.
 
-For test purposes, you can obtain a test session ID an token from the [Vonage account
-page](https://tokbox.com/account). However, in a real application, use the [Vonage Video API server
-SDKs](https://tokbox.com/developer/sdks/server/) to generate a unique test session ID (and a
+Use the [Vonage Video API server SDKs](https://developer.vonage.com/en/tools)
+to generate a unique test session ID (and a
 corresponding token) for each client.
 
 ## To run this test app:

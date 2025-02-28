@@ -52,18 +52,18 @@ Vonage Video web client SDK project, a session ID for a test session, and a toke
 
 ```javascript
 const otNetworkTest = new NetworkTest(OT, {
-  applicationId: '123456', // Add the application ID for your Vonage Video API project here.
+  applicationId: '123456', // Add the application ID for your Vonage Video API application here.
   sessionId: '1_MX40NzIwMzJ-fjE1MDElGQkJJfn4', // Add a test session ID for that project
-  token: 'T1==cGFydG5lcXN0PQ==' // Add a token for that session here
+  token: 'eyJhbGciOiJSUzI1...' // Add a token for that session here
 });
 ```
 
-Use the [Vonage Video API server SDKs](https://tokbox.com/developer/sdks/server/) to generate a
+Use the [Vonage Video API server SDKs](https://developer.vonage.com/en/tools) to generate a
 unique session ID for each client. This session ID is used for the network test, and it must
 be different than the session ID used for communication in the app. The test session must be
 a routed session -- one that uses the [Vonage Video API Media
-Router](https://tokbox.com/developer/guides/create-session/#media-mode). Also generate a test
-token that has publish privileges.
+Router](https://developer.vonage.com/en/video/guides/create-session#the-media-router-and-media-modes).
+Also generate a test token that has publish privileges.
 
 Then run the test methods:
 
@@ -106,9 +106,9 @@ with `audioOnly` set to `true` into the constructor:
 
 ```javascript
 const sessionInfo = {
-  applicationId: '123456', // Add the application ID for your Vonage Video API project here.
+  applicationId: '123456', // Add the application ID for your Vonage Video API application here.
   sessionId: '1_MX40NzIwMzJ-fjE1MDElGQkJJfn4', // Add a test session ID for that project
-  token: 'T1==cGFydG5lcXN0PQ==' // Add a token for that session here
+  token: 'eyJhbGciOiJSUzI1...' // Add a token for that session here
 }
 const options = {audioOnly: true};
 const otNetworkTest = new NetworkTest(OT, sessionInfo, options);
@@ -164,7 +164,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
 
   Note that you may load Vonage Video web client SDK from the Vonage Video API server
   (https://static.opentok.com/v2/js/opentok.js) or via NPM
-  (https://www.npmjs.com/package/@opentok/client). Or if your Vonage Video API project uses the [enterprise
+  (https://www.npmjs.com/package/@opentok/client). Or if your Vonage Video API application uses the [enterprise
   environment](https://tokbox.com/developer/enterprise/content/enterprise-overview.html),
   you will load Vonage Video web client SDK from the enterprise URL.
 
@@ -174,18 +174,18 @@ The `OTNetworkTest()` constructor includes the following parameters:
 
 * `sessionInfo` -- An object containing the following:
 
-  * `applicationId` -- The application ID corresponding to the Vonage Video API project the app uses.
+  * `applicationId` -- The application ID corresponding to the Vonage Video API application the app uses.
 
   * `sessionId` -- A test session ID. This must be an ID for a different session than
      the one that your application will be used for communication. Generate a unique
      session ID for each client. This session ID is used for the network test, and it
      must be different than the session ID used for communication in the app.
      The test session must be a routed session -- one that uses the [Vonage Video API Media
-     Router](https://tokbox.com/developer/guides/create-session/#media-mode).
+     Router](https://developer.vonage.com/en/video/guides/create-session#the-media-router-and-media-modes).
 
      To test connectivity
      in a specific region, specify a location hint when [creating the test
-     session](https://tokbox.com/developer/guides/create-session/).
+     session](https://developer.vonage.com/en/video/guides/create-session).
 
   * `token` -- A token corresponding to the test session. The role of the token must be
     either `publisher` or `moderator`.
@@ -235,7 +235,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
   
   * `initSessionOptions` (Object) -- An object that includes optional options 
     for initializing the session 
-    ([Session Options](https://tokbox.com/developer/sdks/js/reference/OT.html#initSession)). 
+    ([Session Options](https://vonage.github.io/video-docs/video-js-reference/latest/OT.html#initSession)).
     This object includes the following properties:
 	  * `ipWhitelist ` (Boolean) -- This is available as an add-on feature
         for **enterprise accounts**. Set this to true if IP white listing 
@@ -245,7 +245,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
   * `proxyServerUrl` (String) -- (Optional) Set this to the proxy server URL 
     you use in the Vonage Video API client SDKs (for example, when calling `OT.setProxyUrl()`
     in the Vonage Video web client SDK). For more information, please check the 
-    [IP Proxy Documentation](https://tokbox.com/developer/guides/ip-proxy/).
+    [IP Proxy Documentation](https://developer.vonage.com/en/video/guides/ip-proxy).
 
   * `scalableVideo` (Boolean) -- (Optional) Whether to use
     [scalable video](https://tokbox.com/developer/guides/scalable-video/)

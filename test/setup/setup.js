@@ -2,7 +2,7 @@ require('dotenv').config()
 const OpenTok = require('opentok');
 const Promise = require('promise');
 const fse = require('fs-extra');
-const applicationId = process.env.TEST_API_KEY
+const applicationId = process.env.TEST_APPLICATION_ID
 const apiSecret = process.env.TEST_API_SECRET
 
 

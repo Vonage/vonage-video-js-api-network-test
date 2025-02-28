@@ -23,10 +23,9 @@ $ npm run build
 ### Test
 This project's tests are written with Karma and Jasmine. Before running the tests, you will need to create a `.env` file with the following values in the root directory of the repository.
 ```
-TEST_API_KEY={OPENTOK_API_KEY}
-TEST_API_SECRET={OPENTOK_API_SECRET}
+TEST_APPLICATION_ID={VONAGE_APPLICATION_ID}
+TEST_API_SECRET={VONAGE_API_SECRET}
 ```
-*You can obtain a project key and secret from the TokBox [Account Portal](https://tokbox.com/account/).*
 
 To run the tests:
 ```
