@@ -164,9 +164,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
 
   Note that you may load Vonage Video web client SDK from the Vonage Video API server
   (https://static.opentok.com/v2/js/opentok.js) or via NPM
-  (https://www.npmjs.com/package/@vonage/server-sdk). Or if your Vonage Video API application uses the [enterprise
-  environment](https://tokbox.com/developer/enterprise/content/enterprise-overview.html),
-  you will load Vonage Video web client SDK from the enterprise URL.
+  (https://www.npmjs.com/package/@vonage/server-sdk).
 
   Passing the OT object into the `OTNetworkTest()` constructor ensures that the tests will
   use the same version of Vonage Video API and the same Vonage Video API environment that will be used by the
@@ -237,8 +235,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
     for initializing the session 
     ([Session Options](https://vonage.github.io/video-docs/video-js-reference/latest/OT.html#initSession)).
     This object includes the following properties:
-	  * `ipWhitelist ` (Boolean) -- This is available as an add-on feature
-        for **enterprise accounts**. Set this to true if IP white listing 
+	  * `ipWhitelist ` (Boolean) -- Set this to true if IP white listing 
         is enabled for your project. The default value is false. 
 	  * `iceConfig ` (Object) -- This feature is part of the configurable TURN add-on feature.
 
@@ -248,7 +245,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
     [IP Proxy Documentation](https://developer.vonage.com/en/video/guides/ip-proxy).
 
   * `scalableVideo` (Boolean) -- (Optional) Whether to use
-    [scalable video](https://tokbox.com/developer/guides/scalable-video/)
+    [scalable video](https://developer.vonage.com/en/video/guides/scalable-video)
     (`true`) or not (`false`, the default). Disabling scalable video
     was added in Vonage Video web client SDK version 2.24.7.
 
