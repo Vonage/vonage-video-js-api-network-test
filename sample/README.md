@@ -1,7 +1,7 @@
 Vonage Video API Network Test sample app
 ===============================
 
-This sample uses the opentok-network-test-js module to check connectivity to
+This sample uses the vonage-network-test-js module to check connectivity to
 Vonage Video API servers and test session quality.
 
 ## Configuring the app:
@@ -31,14 +31,14 @@ corresponding token) for each client.
 
 Make sure you have configured the app (see the previous section). Then:
 
-1. Make sure you have built the opentok-network-test-js module locally. See the README
+1. Make sure you have built the vonage-network-test-js module locally. See the README
    in the root directory of the project.
 
-   If you want the sample app to load opentok-network-test-js from npmjs.com, change the
+   If you want the sample app to load vonage-network-test-js from npmjs.com, change the
    package.json file in the /sample directory to load it from "*" (or a version, such as
    "^2.x") instead of "file://..":
 
-   ```"opentok-network-test-js": "*"```
+   ```"vonage-network-test-js": "*"```
 
 2. Run `nvm use` (in the /sample directory), or use Node 18 (if you do not use nvm).
    Then run `npm install` (in the /sample directory).

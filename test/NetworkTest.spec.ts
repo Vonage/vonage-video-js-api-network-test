@@ -1,6 +1,6 @@
 /* tslint: disable */
 
-import * as OTClient from '@opentok/client';
+import * as OTClient from '@vonage/client-sdk-video';
 import {
   primary as sessionCredentials,
   faultyLogging as badLoggingCredentials,

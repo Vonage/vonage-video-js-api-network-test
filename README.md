@@ -21,7 +21,7 @@ tool](https://tools.vonage.com/video/precall/).
 First, install the package:
 
 ```
-$ npm install opentok-network-test-js
+$ npm install vonage-network-test-js
 ```
 
 Now load the Vonage Video API Network Test in your project. The module exports two objects:
@@ -34,14 +34,14 @@ Now load the Vonage Video API Network Test in your project. The module exports t
 Using CommonJS:
 
 ```javascript
-const NetworkTest = require('opentok-network-test-js').default;
-const ErrorNames = require('opentok-network-test-js').ErrorNames;
+const NetworkTest = require('vonage-network-test-js').default;
+const ErrorNames = require('vonage-network-test-js').ErrorNames;
 ```
 
 ... or ES6 ...
 
 ```javascript
-import NetworkTest, { ErrorNames } from 'opentok-network-test-js';
+import NetworkTest, { ErrorNames } from 'vonage-network-test-js';
 ```
 
 Load the Vonage Video web client SDK library.
@@ -51,7 +51,7 @@ a configuration object. The configuration object contains an application ID for 
 Vonage Video web client SDK project, a session ID for a test session, and a token for that session:
 
 ```javascript
-const otNetworkTest = new NetworkTest(OT, {
+const videoNetworkTest = new NetworkTest(OT, {
   applicationId: '123456', // Add the application ID for your Vonage Video API application here.
   sessionId: '1_MX40NzIwMzJ-fjE1MDElGQkJJfn4', // Add a test session ID for that project
   token: 'eyJhbGciOiJSUzI1...' // Add a token for that session here
@@ -68,9 +68,9 @@ Also generate a test token that has publish privileges.
 Then run the test methods:
 
 ```javascript
-otNetworkTest.testConnectivity().then((results) => {
+videoNetworkTest.testConnectivity().then((results) => {
   console.log('Vonage Video API connectivity test results', results);
-  otNetworkTest.testQuality(function updateCallback(stats) {
+  videoNetworkTest.testQuality(function updateCallback(stats) {
     console.log('intermediate testQuality stats', stats);
   }).then((results) => {
     // This function is called when the quality test is completed.
@@ -111,9 +111,9 @@ const sessionInfo = {
   token: 'eyJhbGciOiJSUzI1...' // Add a token for that session here
 }
 const options = {audioOnly: true};
-const otNetworkTest = new NetworkTest(OT, sessionInfo, options);
+const videoNetworkTest = new NetworkTest(OT, sessionInfo, options);
 
-otNetworkTest.testQuality(function updateCallback(stats) {
+videoNetworkTest.testQuality(function updateCallback(stats) {
   const currentStats = stats[stats.length - 1];
   console.log('testQuality stats', currentStats);
 }).then((results) => {
@@ -163,7 +163,7 @@ The `OTNetworkTest()` constructor includes the following parameters:
   web page and pass the Vonage Video web client SDK `OT` into the `OTNetworkTest()` constructor.
 
   Note that you may load Vonage Video web client SDK from the Vonage Video API server
-  (https://static.opentok.com/v2/js/opentok.js) or via NPM
+  (https://unpkg.com/@vonage/client-sdk-video@2/dist/js/opentok.js) or via NPM
   (https://www.npmjs.com/package/@vonage/server-sdk).
 
   Passing the OT object into the `OTNetworkTest()` constructor ensures that the tests will
@@ -262,7 +262,7 @@ the `ErrorNames` object (see [ErrorNames](#errornames)). For example:
 
 ```javascript
 try {
-  const otNetworkTest = new NetworkTest(OT, sessionInfo);
+  const videoNetworkTest = new NetworkTest(OT, sessionInfo);
 } catch (error) {
   switch (error.name) {
     case ErrorNames.MISSING_OPENTOK_INSTANCE:
@@ -321,7 +321,7 @@ with a `results` object that has the following two properties:
     For example:
 
     ```javascript
-    otNetworkTest.testConnectivity(function(results) {
+    videoNetworkTest.testConnectivity(function(results) {
       results.failedTests && results.failedTests.forEach(result) => {
         switch (failedTest.error.name) {
           case ErrorNames.FAILED_TO_OBTAIN_MEDIA_DEVICES:
@@ -473,7 +473,7 @@ will be set to one of the values defined as properties of the `ErrorNames` objec
 (see [Error.name values](#errorname-values)).
 
 ```javascript
-otNetworkTest.testQuality(null, function updateCallback() {
+videoNetworkTest.testQuality(null, function updateCallback() {
   // process intermediate results
 }).then((results) => {
   // Display UI based on results

@@ -85,7 +85,7 @@ function connectToSession(session: OT.Session, token: string): Promise<OT.Sessio
  * Checks for camera support for a given resolution.
  *
  * See the "API reference" section of the README.md file in the root of the
- * opentok-network-test-js project for details.
+ * vonage-network-test-js project for details.
  */
 function checkCameraSupport(width: number, height: number): Promise<void> {
   return new Promise((resolve, reject) => {

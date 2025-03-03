@@ -1,5 +1,5 @@
 require('dotenv').config()
-const OpenTok = require('opentok');
+const OpenTok = require('@vonage/server-sdk');
 const Promise = require('promise');
 const fse = require('fs-extra');
 const applicationId = process.env.TEST_APPLICATION_ID
