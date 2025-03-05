@@ -1,5 +1,5 @@
 {
-  "name": "vonage-network-test-js",
+  "name": "@vonage/video-client-network-test",
   "version": "3.1.5",
   "description": "Precall network test for applications using the Vonage Video API platform.",
   "main": "dist/NetworkTest/index.js",

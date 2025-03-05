@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "highcharts": "^9.0.0",
-    "vonage-network-test-js": "../"
+    "@vonage/video-client-network-test": "../"
   }
 }

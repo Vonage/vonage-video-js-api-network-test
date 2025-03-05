@@ -46,7 +46,7 @@ export default class NetworkTest {
 
   /**
    * Returns an instance of NetworkConnectivity. See the "API reference" section of the
-   * README.md file in the root of the vonage-network-test-js project for details.
+   * README.md file in the root of the @vonage/video-client-network-test project for details.
    */
   constructor(OT: OT.Client, credentials: OT.SessionCredentials, options?: NetworkTestOptions) {
     this.validateOT(OT);
@@ -105,7 +105,7 @@ export default class NetworkTest {
    * using Vonage Video API.
    *
    * See the "API reference" section of the README.md file in the root of the
-   * vonage-network-test-js project for details.
+   * @vonage/video-client-network-test project for details.
    */
   testConnectivity(): Promise<ConnectivityTestResults> {
     this.otLogging.logEvent({ action: 'testConnectivity', variation: 'Attempt' });
@@ -118,7 +118,7 @@ export default class NetworkTest {
    * results indicating the recommended supported publisher settings.
    *
    * See the "API reference" section of the README.md file in the root of the
-   * vonage-network-test-js project for details.
+   * @vonage/video-client-network-test project for details.
    */
   testQuality(updateCallback?: UpdateCallback<UpdateCallbackStats>): Promise<QualityTestResults> {
     this.otLogging.logEvent({ action: 'testQuality', variation: 'Attempt' });
@@ -136,7 +136,7 @@ export default class NetworkTest {
    * Stops the currently running test.
    *
    * See the "API reference" section of the README.md file in the root of the
-   * vonage-network-test-js project for details.
+   * @vonage/video-client-network-test project for details.
    */
   stop() {
     stopQualityTest();

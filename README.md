@@ -1,7 +1,7 @@
 # Vonage Video API Network Test
 
 [![license](https://img.shields.io/github/license/opentok/opentok-network-test-js.svg)](https://github.com/opentok/opentok-network-test-js/blob/master/CONTRIBUTING.md)
-[![npm](https://img.shields.io/npm/v/opentok-network-test-js.svg)](https://www.npmjs.com/package/opentok-network-test-js)
+[![npm](https://img.shields.io/npm/v/opentok-network-test-js.svg)](https://www.npmjs.com/package/@vonage/video-client-network-test)
 
 This Node module lets you check network connectivity to resources and services required
 to use [Vonage Video API](https://www.vonage.com/communications-apis/video). Run this on a web client to get the following information:
@@ -21,7 +21,7 @@ tool](https://tools.vonage.com/video/precall/).
 First, install the package:
 
 ```
-$ npm install vonage-network-test-js
+$ npm install @vonage/video-client-network-test
 ```
 
 Now load the Vonage Video API Network Test in your project. The module exports two objects:
@@ -34,14 +34,14 @@ Now load the Vonage Video API Network Test in your project. The module exports t
 Using CommonJS:
 
 ```javascript
-const NetworkTest = require('vonage-network-test-js').default;
-const ErrorNames = require('vonage-network-test-js').ErrorNames;
+const NetworkTest = require('@vonage/video-client-network-test').default;
+const ErrorNames = require('@vonage/video-client-network-test').ErrorNames;
 ```
 
 ... or ES6 ...
 
 ```javascript
-import NetworkTest, { ErrorNames } from 'vonage-network-test-js';
+import NetworkTest, { ErrorNames } from '@vonage/video-client-network-test';
 ```
 
 Load the Vonage Video web client SDK library.
