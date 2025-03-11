@@ -12,11 +12,11 @@ import { ErrorNames } from '../../errors/types';
 export enum FailureType {
   Api = 'api',
   Messaging = 'messaging',
-  OpentokJs = 'Vonage Video web client',
+  OpentokJs = 'OpenTok.js',
   Media = 'media',
   Logging = 'logging',
   // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
-  ConnectivityError = 'Vonage Video web client',
+  ConnectivityError = 'OpenTok.js',
 }
 
 export type FailureCase = {
