@@ -1,24 +1,27 @@
 require('dotenv').config()
-const OpenTok = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 const Promise = require('promise');
 const fse = require('fs-extra');
-const applicationId = process.env.TEST_APPLICATION_ID
-const apiSecret = process.env.TEST_API_SECRET
+const fs = require('fs');
+const applicationId = process.env.TEST_APPLICATION_ID;
 
 
-function createSessionAndToken({ applicationId, apiSecret }) {
-  return new Promise((resolve, reject) => {
-    const opentok = new OpenTok(applicationId, apiSecret);
-    opentok.createSession({ mediaMode: 'routed' }, (error, session) => {
-      if (error) {
-        reject(error);
-      } else {
-        const token = opentok.generateToken(session.sessionId);
-        const { sessionId } = session;
-        resolve({ applicationId, sessionId, token });
-      }
-    });
+async function createSessionAndToken({applicationId, privateKey}) {
+  const vonage = new Vonage({
+    applicationId,
+    privateKey,
   });
+  try {
+    const session = await vonage.video.createSession({ mediaMode: 'routed' });
+    const token = vonage.video.generateClientToken(session.sessionId);
+    const { sessionId } = session;
+    return { applicationId, sessionId, token };
+  } catch(e) {
+    console.error(e);
+    throw e;
+  }
+
+
 }
 
 function writeCredentials(credentialsArray) {
@@ -28,7 +31,8 @@ function writeCredentials(credentialsArray) {
 }
 
 function generateCredentials(){
-  const create = () => createSessionAndToken({ applicationId, apiSecret })
+  const privateKey = fs.readFileSync('./private.key');
+  const create = () => createSessionAndToken({applicationId, privateKey});
 
   Promise.all([create(), create(), create()])
     .then(writeCredentials)

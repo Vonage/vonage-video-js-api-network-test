@@ -1,6 +1,6 @@
 # Vonage Video API Network Test
 
-[![license](https://img.shields.io/github/license/opentok/opentok-network-test-js.svg)](https://github.com/opentok/opentok-network-test-js/blob/master/CONTRIBUTING.md)
+[![license](https://img.shields.io/github/license/vonage/vonage-video-js-api-network-test.svg)](https://github.com/Vonage/vonage-video-js-api-network-test/blob/develop/CONTRIBUTING.md)
 [![npm](https://img.shields.io/npm/v/opentok-network-test-js.svg)](https://www.npmjs.com/package/@vonage/video-client-network-test)
 
 This Node module lets you check network connectivity to resources and services required
