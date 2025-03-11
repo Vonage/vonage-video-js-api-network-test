@@ -21,14 +21,11 @@ $ npm run build
 ```
 
 ### Test
-This project's tests are written with Karma and Jasmine. Before running the tests, you will need to create a `.env` file with the following values in the root directory of the repository.
+This project's tests are written with Karma and Jasmine. Before running the tests, you will need to create a `.env` file with the following value (your Vonage application ID for testing) in the root directory of the project:
 ```
 TEST_APPLICATION_ID={VONAGE_APPLICATION_ID}
 ```
-You will also need a Vonage `private.key` file, which you can obtain by logging into your [Vonage Video API account](https://dashboard.nexmo.com/). Once you have your `private.key`, move it to the project root directory and update `setup.js` with the path to your `private.key`:
-```
-const privateKeyPath = './private.key';
-```
+You will also need a Vonage `private.key` file, which you can obtain by logging into your [Vonage Video API account](https://dashboard.nexmo.com/). Once you have your `private.key`, move it to the root directory of the project.
 
 To run the tests:
 ```
