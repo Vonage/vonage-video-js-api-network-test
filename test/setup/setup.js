@@ -1,9 +1,9 @@
 require('dotenv').config()
 const { Vonage } = require('@vonage/server-sdk');
-const Promise = require('promise');
 const fse = require('fs-extra');
 const fs = require('fs');
 const applicationId = process.env.TEST_APPLICATION_ID;
+const privateKeyPath = './private.key';
 
 
 async function createSessionAndToken({applicationId, privateKey}) {
@@ -24,20 +24,27 @@ async function createSessionAndToken({applicationId, privateKey}) {
 
 }
 
-function writeCredentials(credentialsArray) {
+async function writeCredentials(credentialsArray) {
   const [primary, faultyLogging, faultyApi] = credentialsArray;
   const credentials = { primary, faultyLogging, faultyApi };
   return fse.outputJson('./test/credentials.json', credentials);
 }
 
-function generateCredentials(){
-  const privateKey = fs.readFileSync('./private.key');
-  const create = () => createSessionAndToken({applicationId, privateKey});
+async function generateCredentials(){
+  try {
+    const privateKey = fs.readFileSync(privateKeyPath);
 
-  Promise.all([create(), create(), create()])
-    .then(writeCredentials)
-    .then((results) => console.info('Generated session credentials for test.'))
-    .catch(e => console.error('Failed to generate test credentials', e));
+    const sessions = await Promise.all([
+      createSessionAndToken({ applicationId, privateKey }),
+      createSessionAndToken({ applicationId, privateKey }),
+      createSessionAndToken({ applicationId, privateKey })
+    ]);
+
+    await writeCredentials(sessions);
+    console.info('Generated session credentials for test.');
+  } catch(e) {
+    console.error('Failed to generate test credentials', e);
+  }
 }
 
 generateCredentials();
