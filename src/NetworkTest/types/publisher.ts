@@ -27,4 +27,5 @@ export interface PublisherStats {
   transportProtocol: string;
   currentRoundTripTime: number;
   timestamp: number;
+  mediaRouting?: string;
 }

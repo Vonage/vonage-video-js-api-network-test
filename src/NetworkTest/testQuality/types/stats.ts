@@ -32,6 +32,7 @@ export interface AverageStats {
   recommendedFrameRate?: number;
   recommendedResolution?: string;
   mos?: number;
+  mediaRouting?: string;
 }
 
 export interface AverageStatsBase {

@@ -1,5 +1,5 @@
 import { PublisherStats } from '../../types/publisher';
-import { RTCIceCandidateStats } from '../../types/rtcStats';
+import { RTCIceCandidateStats, MediaRouting } from '../../types/rtcStats';
 
 export interface PreviousStreamStats {
   [ssrc: number]: {
@@ -57,13 +57,49 @@ const calculateVideoBitrate = (
   return Math.round((byteSent * 8) / (1000 * timeDiff)); // Convert to kbit per second
 };
 
+const determineMediaRouting = (
+  localCandidate: RTCIceCandidateStats | null,
+  remoteCandidate: RTCIceCandidateStats | null,
+): MediaRouting => {
+  if (!localCandidate || !remoteCandidate) {
+    return 'Unknown';
+  }
+
+  const localType = localCandidate.candidateType;
+  const remoteType = remoteCandidate.candidateType;
+  const protocol = (localCandidate.protocol || '').toLowerCase();
+
+  if (localType === 'host' && remoteType === 'host') {
+    return 'Routed';
+  }
+
+  if ((localType === 'prflx' || localType === 'host') && remoteType === 'host') {
+    return 'Routed';
+  }
+
+  const isTcp = protocol === 'tcp';
+
+  if (localType === 'relay' || remoteType === 'relay') {
+    return isTcp ? 'Relayed (TURN/TLS)' : 'Relayed (TURN/UDP)';
+  }
+
+  if (localType === 'srflx' || remoteType === 'srflx') {
+    return isTcp ? 'Relayed (STUN/TLS)' : 'Relayed (STUN/UDP)';
+  }
+
+  if (localType === 'prflx' || remoteType === 'prflx') {
+    return isTcp ? 'Relayed (STUN/TLS)' : 'Relayed (STUN/UDP)';
+  }
+  return 'Unknown';
+};
+
 const extractOutboundRtpStats = (
   outboundRtpStats: (RTCOutboundRtpStreamStats & {
     mediaType?: 'video' | 'audio';
     qualityLimitationReason?: string;
     active?: boolean;
   })[],
-  previousStats?: PublisherStats,
+  previousStats?: PublisherStats
 ) => {
   const videoStats = [];
   const audioStats = [];
@@ -116,10 +152,12 @@ const extractPublisherStats = (
     return rtcStatsArray.find(stats => stats.type === type && stats.id === id) as RTCIceCandidateStats | null;
   };
 
-  const localCandidate = findCandidateById('local-candidate', iceCandidatePairStats.localCandidateId);
+  const localCandidate = findCandidateById('local-candidate', iceCandidatePairStats?.localCandidateId);
+  const remoteCandidate = findCandidateById('remote-candidate', iceCandidatePairStats?.remoteCandidateId);
 
   const { videoStats, audioStats } = extractOutboundRtpStats(outboundRtpStats, previousStats);
 
+  const mediaRouting = determineMediaRouting(localCandidate, remoteCandidate);
   const availableOutgoingBitrate = iceCandidatePairStats?.availableOutgoingBitrate || -1;
   const currentRoundTripTime = iceCandidatePairStats?.currentRoundTripTime || -1;
   const videoKbsSent = videoStats.reduce((sum, stats) => sum + stats.kbs, 0);
@@ -138,5 +176,6 @@ const extractPublisherStats = (
     transportProtocol,
     currentRoundTripTime,
     timestamp,
+    mediaRouting,
   };
 };

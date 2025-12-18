@@ -317,19 +317,6 @@ export function testConnectivity(
     };
 
     const onFailure = (error: Error) => {
-      if (error.name === ErrorNames.PERMISSION_DENIED_ERROR) {
-        otLogging.logEvent({
-          action: 'testConnectivity',
-          variation: 'Failure',
-          payload: {
-            errorName: error.name,
-            errorMessage: error.message,
-          },
-        });
-        reject(error);
-        return;
-      }
-
       const handleResults = (...errors: e.ConnectivityError[]) => {
         /**
          * If we have a messaging server failure, we will also fail the media
@@ -357,7 +344,7 @@ export function testConnectivity(
             errorNames: errors.map(e => e.name || 'Unknown Error'),
           },
         });
-        resolve(results);
+        reject(results);
       };
 
       /**

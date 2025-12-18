@@ -27,8 +27,6 @@ import {
 } from './errors';
 import OTKAnalytics = require('opentok-solutions-logging');
 
-export { QualityTestResults } from './testQuality';
-export { ConnectivityTestResults } from './testConnectivity';
 export interface NetworkTestOptions {
   audioOnly?: boolean;
   timeout?: number;
@@ -39,6 +37,10 @@ export interface NetworkTestOptions {
   scalableVideo?: boolean;
   fullHd?: boolean;
 }
+
+export { QualityTestResults } from './testQuality';
+export { ConnectivityTestResults } from './testConnectivity';
+
 export default class NetworkTest {
   credentials: SessionCredentials;
   OTInstance: typeof OT;

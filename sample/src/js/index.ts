@@ -2,6 +2,7 @@ import NetworkTest, {ErrorNames} from '@vonage/video-client-network-test';
 import createChart from './chart.js';
 import * as ConnectivityUI from './connectivity-ui.js';
 import config from './config.js';
+import { ConnectivityError, FailureCase } from './types.js';
 declare const OT: any;
 let sessionInfo = config;
 let videoNetworkTest : NetworkTest;
@@ -58,16 +59,21 @@ function startTest() {
     };
 
     videoNetworkTest = new NetworkTest(OT, sessionInfo, options);
+
     videoNetworkTest.testConnectivity()
-        .then(results => ConnectivityUI.displayTestConnectivityResults(results))
-        .then(testQuality)
-        .catch(error => {
-            // Handle permission errors - show message and retry button
-            if (error.name === ErrorNames.PERMISSION_DENIED_ERROR) {
+        .then(results => {
+            ConnectivityUI.displayTestConnectivityResults(results);
+            return testQuality();
+        })
+        .catch((error: ConnectivityError) => {
+        const hasPermissionError = error.failedTests?.some(
+            (test: FailureCase) => test.error?.name === ErrorNames.PERMISSION_DENIED_ERROR
+        );
+            
+            if (hasPermissionError) {
                 displayPermissionDeniedError();
             } else {
-                // Handle other errors - show failure message and retry button
-                ConnectivityUI.displayTestConnectivityResults({ success: false, failedTests: [] });
+                ConnectivityUI.displayTestConnectivityResults(error);
                 ConnectivityUI.showRetryButton();
             }
             
