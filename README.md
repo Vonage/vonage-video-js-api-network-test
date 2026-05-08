@@ -1,3 +1,6 @@
+:warning: **This repository has been deprecated in favour of the [Vonage Video API Network Test](https://github.com/Vonage/vonage-video-api-network-test) repository** :warning:
+
+> **Why this change?** We've consolidated our Vonage and OpenTok branded Network Tests into a single monorepo to eliminate code duplication. The [Vonage Video API Network Test](https://github.com/Vonage/vonage-video-api-network-test) repository uses brand-aware build configuration to produce both Vonage and OpenTok artifacts from shared sources.
 # Vonage Video API Network Test
 
 [![license](https://img.shields.io/github/license/vonage/vonage-video-js-api-network-test.svg)](https://github.com/Vonage/vonage-video-js-api-network-test/blob/develop/CONTRIBUTING.md)
